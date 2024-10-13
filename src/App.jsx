@@ -3,14 +3,21 @@ import "./App.css";
 
 function App() {
   const url = "https://opentdb.com/api.php?";
-
+  const categories = {
+    Sports: 21,
+  };
+  console.log(categories["Sports"]);
   return (
     <main className="main__container">
       <form action="" className="form">
         <h1 className="title">Quiz setup</h1>
         <div className="input__container">
           <label htmlFor="numberOfQuestions">Number of questions:</label>
-          <input type="number" className="questions__numbers" value={10} />
+          <input
+            type="number"
+            className="questions__numbers"
+            defaultValue={10}
+          />
         </div>
         <div className="input__container">
           <label htmlFor="category">Category:</label>
