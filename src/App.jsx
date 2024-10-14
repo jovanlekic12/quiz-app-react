@@ -5,6 +5,9 @@ function App() {
   const url = "https://opentdb.com/api.php?";
   const categories = {
     Sports: 21,
+    GeneralKnowledge: 9,
+    VideoGames: 27,
+    Mythology: 20,
   };
   console.log(categories["Sports"]);
   return (
