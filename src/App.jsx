@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Form from "./form";
+import Question from "./questions";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   const [error, setError] = useState();
   const url = "https://opentdb.com/api.php?";
 
+  const [questions, setQuestions] = useState([]);
   const [amount, setAmount] = useState(10);
   const [category, setCategory] = useState(9);
   const [difficulty, setDifficulty] = useState("easy");
@@ -17,7 +19,7 @@ function App() {
         url + `amount=${amount}&category=${category}&difficulty=${difficulty}`
       );
       const data = await response.json();
-      console.log(data);
+      setQuestions(data.results);
     } catch (error) {
       setError(error);
     }
@@ -32,7 +34,7 @@ function App() {
   return (
     <main className="main__container">
       {isSubmited ? (
-        <Question />
+        <Question {...questions} />
       ) : (
         <Form
           handleSubmit={handleSubmit}
