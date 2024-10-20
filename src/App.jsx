@@ -25,16 +25,16 @@ function App() {
     }
   };
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    fetchData();
+    await fetchData();
     setIsSubmited(!isSubmited);
   }
 
   return (
     <main className="main__container">
       {isSubmited ? (
-        <Question {...questions} />
+        <Question {...questions} amount={amount} />
       ) : (
         <Form
           handleSubmit={handleSubmit}
@@ -42,6 +42,7 @@ function App() {
           setAmount={setAmount}
           setCategory={setCategory}
           setDifficulty={setDifficulty}
+          questions={questions}
         />
       )}
     </main>
