@@ -12,7 +12,7 @@ function App() {
   const [amount, setAmount] = useState(10);
   const [category, setCategory] = useState(9);
   const [difficulty, setDifficulty] = useState("easy");
-
+  let totalQuestions = questions.length;
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -30,11 +30,11 @@ function App() {
     await fetchData();
     setIsSubmited(!isSubmited);
   }
-
+  if (questions.length === 0 && isSubmited) return <h1>loading...</h1>;
   return (
     <main className="main__container">
       {isSubmited ? (
-        <Question {...questions} amount={amount} />
+        <Question {...questions} totalQuestions={totalQuestions} />
       ) : (
         <Form
           handleSubmit={handleSubmit}

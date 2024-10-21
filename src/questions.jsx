@@ -2,21 +2,33 @@ import { useState } from "react";
 
 function Question(props) {
   const [index, setIndex] = useState(0);
-  const { question, incorrect_answers, correct_answer, questions, amount } =
-    props[index];
+  const [isFinished, setIsFinished] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const { totalQuestions } = props;
+  const { question, incorrect_answers, correct_answer } = props[index];
   function Next() {
-    if (index === amount) {
-      console.log("mjau");
+    if (index === totalQuestions - 1) {
+      setIsFinished(!isFinished);
       return;
-    } else setIndex(index + 1);
+    } else {
+      setIndex(index + 1);
+      console.log(index);
+    }
   }
-  return (
+  //pogledaj dangerouslySetInnerHtml
+  return isFinished ? (
+    <article className="modal">
+      <p>Game over!</p>
+      <p>
+        You answered {correctAnswers}/{totalQuestions} questions correctly
+      </p>
+    </article>
+  ) : (
     <article className="question__container">
-      <p>mjau</p>
-      <h1>{question}</h1>
+      <h1 dangerouslySetInnerHTML={{ __html: question }} />
       <ul className="answers__list">
-        <li className="answer">{correct_answer}</li>
-        <li>{incorrect_answers}</li>
+        <li dangerouslySetInnerHTML={{ __html: correct_answer }} />
+        <li dangerouslySetInnerHTML={{ __html: incorrect_answers }} />
       </ul>
       <button className="next__btn" onClick={Next}>
         Next question
