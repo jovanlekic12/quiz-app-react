@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Answer from "./answer";
 
 function Question(props) {
   const [index, setIndex] = useState(0);
@@ -28,7 +29,13 @@ function Question(props) {
       <h1 dangerouslySetInnerHTML={{ __html: question }} />
       <ul className="answers__list">
         <li dangerouslySetInnerHTML={{ __html: correct_answer }} />
-        <li dangerouslySetInnerHTML={{ __html: incorrect_answers }} />
+        {incorrect_answers.map((answer) => {
+          return (
+            incorrect_answers && (
+              <Answer {...answer} key={self.crypto.randomUUID()} />
+            )
+          );
+        })}
       </ul>
       <button className="next__btn" onClick={Next}>
         Next question
