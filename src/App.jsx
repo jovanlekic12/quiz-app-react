@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   const [isSubmited, setIsSubmited] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
   const url = "https://opentdb.com/api.php?";
   const [questions, setQuestions] = useState([]);
   const [amount, setAmount] = useState(10);
@@ -30,6 +30,9 @@ function App() {
     setIsSubmited(!isSubmited);
   }
   if (questions.length === 0 && isSubmited) return <h1>loading...</h1>;
+  {
+    error && <p>Error: {error}</p>;
+  }
   return (
     <main className="main__container">
       {isSubmited ? (

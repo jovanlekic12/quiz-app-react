@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Answer from "./answer";
-
+import Modal from "./modal";
 function Question(props) {
   const [index, setIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
@@ -23,15 +23,11 @@ function Question(props) {
   }
 
   return isFinished ? (
-    <article className="modal">
-      <p>Game over!</p>
-      <p>
-        You answered {correctAnswers}/{totalQuestions} questions correctly
-      </p>
-      <button className="restart__btn" onClick={handleRestart}>
-        Restart
-      </button>
-    </article>
+    <Modal
+      correctAnswers={correctAnswers}
+      totalQuestions={totalQuestions}
+      handleRestart={handleRestart}
+    />
   ) : (
     <article className="question__container">
       <p className="correct__answers__counter">
