@@ -7,7 +7,6 @@ function App() {
   const [isSubmited, setIsSubmited] = useState(false);
   const [error, setError] = useState();
   const url = "https://opentdb.com/api.php?";
-
   const [questions, setQuestions] = useState([]);
   const [amount, setAmount] = useState(10);
   const [category, setCategory] = useState(9);
@@ -34,7 +33,11 @@ function App() {
   return (
     <main className="main__container">
       {isSubmited ? (
-        <Question {...questions} totalQuestions={totalQuestions} />
+        <Question
+          {...questions}
+          totalQuestions={totalQuestions}
+          setIsSubmited={setIsSubmited}
+        />
       ) : (
         <Form
           handleSubmit={handleSubmit}
