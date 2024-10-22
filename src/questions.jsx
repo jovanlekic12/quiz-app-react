@@ -16,7 +16,7 @@ function Question(props) {
       console.log(index);
     }
   }
-  //pogledaj dangerouslySetInnerHtml
+
   return isFinished ? (
     <article className="modal">
       <p>Game over!</p>
