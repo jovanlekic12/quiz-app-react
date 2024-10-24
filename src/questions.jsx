@@ -5,17 +5,20 @@ function Question(props) {
   const [index, setIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const { totalQuestions, setIsSubmited } = props;
-  const { question, incorrect_answers, correct_answer } = props[index];
+  const { totalQuestions, setIsSubmited, questions } = props;
+  const { question, incorrect_answers, correct_answer } = questions[index];
   function Next() {
     if (index === totalQuestions - 1) {
-      setIsFinished(true);
+      // setIsFinished(true);
+      console.log(index);
+      console.log(totalQuestions);
       return;
     } else {
       setIndex(index + 1);
     }
   }
-
+  console.log(questions);
+  console.log(question);
   function handleRestart() {
     setIsFinished(false);
     setIsSubmited(false);

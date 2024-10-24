@@ -37,7 +37,7 @@ function App() {
     <main className="main__container">
       {isSubmited ? (
         <Question
-          {...questions}
+          questions={questions}
           totalQuestions={totalQuestions}
           setIsSubmited={setIsSubmited}
         />
