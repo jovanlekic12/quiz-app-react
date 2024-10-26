@@ -50,8 +50,8 @@ function App() {
   }
 
   function handleActiveQuestion(index) {
-    const activeQuestion = questions[index];
-    setActiveQuestion(activeQuestion);
+    // const activeQuestion = questions[index];
+    setActiveQuestion(...questions[index]);
     console.log(questions);
     console.log(activeQuestion);
   }

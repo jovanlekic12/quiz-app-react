@@ -34,7 +34,7 @@ function Question(props) {
           dangerouslySetInnerHTML={{ __html: correct_answer }}
           onClick={(() => setCorrectAnswers(correctAnswers + 1), Next())}
         />
-        {incorrect_answers.map((answer) => {
+        {/* {incorrect_answers.map((answer) => {
           return (
             incorrect_answers && (
               <Answer
@@ -46,7 +46,7 @@ function Question(props) {
               />
             )
           );
-        })}
+        })} */}
       </ul>
       <button className="next__btn" onClick={Next}>
         Next question
