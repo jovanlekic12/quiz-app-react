@@ -2,36 +2,24 @@ import { useState } from "react";
 import Answer from "./answer";
 import Modal from "./modal";
 function Question(props) {
-  const [index, setIndex] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const { totalQuestions, setIsSubmited, questions } = props;
-  const { question, incorrect_answers, correct_answer } = questions[index];
-  function Next() {
-    if (index === totalQuestions - 1) {
-      // setIsFinished(true);
-      console.log(index);
-      console.log(totalQuestions);
-      return;
-    } else {
-      setIndex(index + 1);
-    }
-  }
-  console.log(questions);
-  console.log(question);
-  function handleRestart() {
-    setIsFinished(false);
-    setIsSubmited(false);
-    setCorrectAnswers(0);
-  }
+  const {
+    totalQuestions,
+    setIsSubmited,
+    question,
+    incorrect_answers,
+    correct_answer,
+    Next,
+  } = props;
 
-  return isFinished ? (
-    <Modal
-      correctAnswers={correctAnswers}
-      totalQuestions={totalQuestions}
-      handleRestart={handleRestart}
-    />
-  ) : (
+  // return isFinished ? (
+  //   <Modal
+  //     correctAnswers={correctAnswers}
+  //     totalQuestions={totalQuestions}
+  //     handleRestart={handleRestart}
+  //   />
+  // ) : (
+  return (
     <article className="question__container">
       <p className="correct__answers__counter">
         Correct answers {correctAnswers}/{totalQuestions}
@@ -65,5 +53,6 @@ function Question(props) {
       </button>
     </article>
   );
+  // );
 }
 export default Question;
