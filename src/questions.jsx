@@ -12,7 +12,9 @@ function Question(props) {
     isFinished,
     handleRestart,
   } = props;
+
   const [answers, setAnswers] = useState([]);
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * (incorrect_answers + 1));
     const newAnswers = [...incorrect_answers];
@@ -36,11 +38,6 @@ function Question(props) {
         dangerouslySetInnerHTML={{ __html: question }}
       />
       <ul className="answers__list">
-        <li
-          className="answer"
-          dangerouslySetInnerHTML={{ __html: correct_answer }}
-          onClick={() => setCorrectAnswers(correctAnswers + 1)}
-        />
         {answers.map((answer) => {
           return (
             <Answer
