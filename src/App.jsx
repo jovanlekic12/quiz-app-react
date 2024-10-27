@@ -5,12 +5,12 @@ import "./App.css";
 
 function App() {
   const url = "https://opentdb.com/api.php?";
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [index, setIndex] = useState(0);
   const [isSubmited, setIsSubmited] = useState(false);
   const [error, setError] = useState(null);
   const [questions, setQuestions] = useState([]);
-  const [activeQuestion, setActiveQuestion] = useState("mjau");
   const [amount, setAmount] = useState(10);
   const [category, setCategory] = useState(9);
   const [difficulty, setDifficulty] = useState("easy");
@@ -31,16 +31,15 @@ function App() {
     event.preventDefault();
     await fetchData();
     setIsSubmited(!isSubmited);
-    handleActiveQuestion();
   }
 
   function Next() {
-    // if (index === totalQuestions - 1) {
-    //   setIsFinished(true);
-    //   return;
-    // } else {
-    //   setIndex(index + 1);
-    // }
+    if (index === totalQuestions - 1) {
+      setIsFinished(true);
+      return;
+    } else {
+      setIndex(index + 1);
+    }
   }
 
   function handleRestart() {
@@ -49,21 +48,18 @@ function App() {
     setCorrectAnswers(0);
   }
 
-  function handleActiveQuestion(index) {
-    const activeQuestion = questions[index];
-    setActiveQuestion(activeQuestion);
-    console.log(activeQuestion);
-    console.log(questions);
-  }
-
   return (
     <main className="main__container">
       {isSubmited ? (
         <Question
-          question={activeQuestion}
+          question={questions[index]}
           totalQuestions={totalQuestions}
           setIsSubmited={setIsSubmited}
           Next={Next}
+          isFinished={isFinished}
+          handleRestart={handleRestart}
+          correctAnswers={correctAnswers}
+          setCorrectAnswers={setCorrectAnswers}
         />
       ) : (
         <Form
