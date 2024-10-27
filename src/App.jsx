@@ -10,7 +10,7 @@ function App() {
   const [isSubmited, setIsSubmited] = useState(false);
   const [error, setError] = useState(null);
   const [questions, setQuestions] = useState([]);
-  const [activeQuestion, setActiveQuestion] = useState(null);
+  const [activeQuestion, setActiveQuestion] = useState("mjau");
   const [amount, setAmount] = useState(10);
   const [category, setCategory] = useState(9);
   const [difficulty, setDifficulty] = useState("easy");
@@ -50,10 +50,10 @@ function App() {
   }
 
   function handleActiveQuestion(index) {
-    // const activeQuestion = questions[index];
-    setActiveQuestion(...questions[index]);
-    console.log(questions);
+    const activeQuestion = questions[index];
+    setActiveQuestion(activeQuestion);
     console.log(activeQuestion);
+    console.log(questions);
   }
 
   return (
