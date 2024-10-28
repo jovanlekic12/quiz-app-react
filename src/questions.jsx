@@ -11,6 +11,7 @@ function Question(props) {
     Next,
     isFinished,
     handleRestart,
+    number,
   } = props;
 
   const [answers, setAnswers] = useState([]);
@@ -42,6 +43,7 @@ function Question(props) {
       <p className="correct__answers__counter">
         Correct answers {correctAnswers}/{totalQuestions}
       </p>
+      <h1 className="question__title">{number}.</h1>
       <h1
         className="question__title"
         dangerouslySetInnerHTML={{ __html: question }}

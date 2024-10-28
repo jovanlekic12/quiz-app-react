@@ -46,6 +46,7 @@ function App() {
     setIsFinished(false);
     setIsSubmited(false);
     setCorrectAnswers(0);
+    setIndex(0);
     setQuestions([]);
   }
 
@@ -61,6 +62,7 @@ function App() {
           handleRestart={handleRestart}
           correctAnswers={correctAnswers}
           setCorrectAnswers={setCorrectAnswers}
+          number={index + 1}
         />
       ) : (
         <Form
