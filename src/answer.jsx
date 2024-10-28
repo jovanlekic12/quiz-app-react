@@ -1,8 +1,8 @@
 function Answer(props) {
-  const { answer, Next } = props;
+  const { answer, handleIsCorrect } = props;
   return (
     <li
-      onClick={Next}
+      onClick={(event) => handleIsCorrect(event.target.textContent)}
       className="answer"
       dangerouslySetInnerHTML={{ __html: answer }}
     />

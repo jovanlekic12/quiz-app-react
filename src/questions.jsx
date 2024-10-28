@@ -15,8 +15,17 @@ function Question(props) {
 
   const [answers, setAnswers] = useState([]);
 
+  function handleIsCorrect(answer) {
+    if (answer === correct_answer) {
+      setCorrectAnswers(correctAnswers + 1);
+      Next();
+    } else Next();
+  }
+
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * (incorrect_answers + 1));
+    const randomIndex = Math.floor(
+      Math.random() * (incorrect_answers.length + 1)
+    );
     const newAnswers = [...incorrect_answers];
     newAnswers.splice(randomIndex, 0, correct_answer);
     setAnswers(newAnswers);
@@ -45,6 +54,7 @@ function Question(props) {
               dangerouslySetInnerHTML={{ __html: answer }}
               key={self.crypto.randomUUID()}
               Next={Next}
+              handleIsCorrect={handleIsCorrect}
             />
           );
         })}
@@ -54,6 +64,5 @@ function Question(props) {
       </button>
     </article>
   );
-  // );
 }
 export default Question;

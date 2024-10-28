@@ -46,6 +46,7 @@ function App() {
     setIsFinished(false);
     setIsSubmited(false);
     setCorrectAnswers(0);
+    setQuestions([]);
   }
 
   return (
