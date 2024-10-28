@@ -6,7 +6,6 @@ function Question(props) {
     correctAnswers,
     setCorrectAnswers,
     totalQuestions,
-    setIsSubmited,
     question: { incorrect_answers, correct_answer, question },
     Next,
     isFinished,
@@ -40,9 +39,6 @@ function Question(props) {
     />
   ) : (
     <article className="question__container">
-      <p className="correct__answers__counter">
-        Correct answers {correctAnswers}/{totalQuestions}
-      </p>
       <h1 className="question__title">{number}.</h1>
       <h1
         className="question__title"
@@ -61,6 +57,9 @@ function Question(props) {
           );
         })}
       </ul>
+      <p className="correct__answers__counter">
+        Correct answers {correctAnswers}/{totalQuestions}
+      </p>
       <button className="next__btn" onClick={Next}>
         Next question
       </button>

@@ -126,9 +126,9 @@ input {
 }
 
 .correct__answers__counter {
-  text-align: end;
+  text-align: center;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: orangered;
 }
 
@@ -169,6 +169,7 @@ input {
 @media (max-width: 1000px) {
   .question__container {
     min-width: 20rem;
+    gap: 1rem;
   }
   .form {
     max-width: 22rem;
