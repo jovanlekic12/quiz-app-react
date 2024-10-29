@@ -13,7 +13,7 @@ function Question(props) {
     number,
   } = props;
 
-  const [answers, setAnswers] = useState([]);
+  const answers = handleRandomAnswer();
 
   function handleIsCorrect(answer) {
     if (answer === correct_answer) {
@@ -22,14 +22,14 @@ function Question(props) {
     } else Next();
   }
 
-  useEffect(() => {
+  function handleRandomAnswer() {
     const randomIndex = Math.floor(
       Math.random() * (incorrect_answers.length + 1)
     );
     const newAnswers = [...incorrect_answers];
     newAnswers.splice(randomIndex, 0, correct_answer);
-    setAnswers(newAnswers);
-  }, [question]);
+    return newAnswers;
+  }
 
   return isFinished ? (
     <Modal
